@@ -2,8 +2,9 @@
 import hashlib
 from datetime import datetime
 
+
 def dictionary_attack(password_hash):
-    dictionary = open(raw_input('Enter dictionary file : '), 'r')
+    dictionary = open('rockyou.txt', 'r')
     # for line in dictionary:
     # line = line.replace("\n", "")
     # fp.close()
@@ -25,23 +26,23 @@ def dictionary_attack(password_hash):
             password_found = True
             recoverd_password = dictionary_value.title()
     if password_found == True:
-        print 'Found match for hash \n', password_hash
-        print 'Password recoverd: ', recoverd_password
+        print 'Found match for hash \n'
+        print 'Password recoverd: ', password_hash, ':', recoverd_password
     else:
         print 'Password not found'
     t2 = datetime.now()
-    total = t2 -t1
+    total = t2 - t1
     print 'Scanning completed in: ', total
 
 
 def main():
     # password_hash = raw_input('Enter md5 hash: ')
     try:
-        openfile = open(raw_input('Enter hash file: '), 'r')
+        openfile = open('hash.txt', 'r')
         for passwd in openfile:
-            passwd = passwd.replace("\n", "")
+            passwd = passwd.strip('\n')
             password_hash = passwd
-            # pf.close()
+            # password_hash.close()
 
         dictionary_attack(password_hash)
     except KeyboardInterrupt:
