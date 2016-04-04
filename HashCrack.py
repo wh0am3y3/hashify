@@ -35,9 +35,8 @@ def dictionary_attack(password_hash):
 
 def main():
     try:
-        openfile = open(raw_input('Enter Hash file: '), 'r')
-        readfile = openfile.readlines()
-        for passwd in readfile:
+        openfile = open(raw_input('Enter Hash file: '), 'r').readlines()
+        for passwd in openfile:
             passwd = passwd.strip('\n')
             password_hash = passwd
             # password_hash.close()
