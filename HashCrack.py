@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 import hashlib
-
+from datetime import datetime
 
 def dictionary_attack(password_hash):
-    with open(raw_input('Enter File name : '), 'r') as fp:
-        for line in fp:
-            line = line.replace("\n", "")
-            dictionary = line
-            fp.close()
+    dictionary = open(raw_input('Enter dictionary file : '), 'r')
+    # for line in dictionary:
+    # line = line.replace("\n", "")
+    # fp.close()
     # dictionary = ['letmein', 'password', '12345', 'football']
+    t1 = datetime.now()
     password_found = False
     for dictionary_value in dictionary:
+        dictionary_value = dictionary_value.replace('\n', '')
         hashed_value = (hashlib.md5(dictionary_value)).hexdigest()
         hashed_value_upper = (hashlib.md5(dictionary_value.upper())).hexdigest()
         hashed_value_UpperLetter = (hashlib.md5(dictionary_value.title())).hexdigest()
@@ -23,22 +24,24 @@ def dictionary_attack(password_hash):
         elif hashed_value_UpperLetter == password_hash:
             password_found = True
             recoverd_password = dictionary_value.title()
-            break
     if password_found == True:
         print 'Found match for hash \n', password_hash
         print 'Password recoverd: ', recoverd_password
     else:
         print 'Password not found'
+    t2 = datetime.now()
+    total = t2 -t1
+    print 'Scanning completed in: ', total
 
 
 def main():
     # password_hash = raw_input('Enter md5 hash: ')
     try:
-        with open(raw_input('Enter hash file: '), 'r') as pf:
-            for passwd in pf:
-                passwd = passwd.replace("\n", "")
-                password_hash = passwd
-                pf.close()
+        openfile = open(raw_input('Enter hash file: '), 'r')
+        for passwd in openfile:
+            passwd = passwd.replace("\n", "")
+            password_hash = passwd
+            # pf.close()
 
         dictionary_attack(password_hash)
     except KeyboardInterrupt:
