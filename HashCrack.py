@@ -39,12 +39,12 @@ def main():
     # password_hash = raw_input('Enter md5 hash: ')
     try:
         openfile = open('hash.txt', 'r')
-        for passwd in openfile:
+        readfile = openfile.readlines()
+        for passwd in readfile:
             passwd = passwd.strip('\n')
             password_hash = passwd
             # password_hash.close()
-
-        dictionary_attack(password_hash)
+            dictionary_attack(password_hash)
     except KeyboardInterrupt:
         print '<-- Ctrl-C pressed exited'
 
