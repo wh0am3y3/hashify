@@ -2,17 +2,15 @@
 import hashlib
 from datetime import datetime
 
+dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
+
 
 def dictionary_attack(password_hash):
-    dictionary = open('rockyou.txt', 'r')
-    # for line in dictionary:
-    # line = line.replace("\n", "")
-    # fp.close()
-    # dictionary = ['letmein', 'password', '12345', 'football']
+    # dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
     t1 = datetime.now()
     password_found = False
     for dictionary_value in dictionary:
-        dictionary_value = dictionary_value.replace('\n', '')
+        dictionary_value = dictionary_value.strip('\n')
         hashed_value = (hashlib.md5(dictionary_value)).hexdigest()
         hashed_value_upper = (hashlib.md5(dictionary_value.upper())).hexdigest()
         hashed_value_UpperLetter = (hashlib.md5(dictionary_value.title())).hexdigest()
@@ -36,9 +34,8 @@ def dictionary_attack(password_hash):
 
 
 def main():
-    # password_hash = raw_input('Enter md5 hash: ')
     try:
-        openfile = open('hash.txt', 'r')
+        openfile = open(raw_input('Enter Hash file: '), 'r')
         readfile = openfile.readlines()
         for passwd in readfile:
             passwd = passwd.strip('\n')
