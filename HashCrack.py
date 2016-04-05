@@ -23,6 +23,7 @@ def dictionary_attack(password_hash):
             password_found = True
             recoverd_password = dictionary_value.title()
     if password_found == True:
+        print '-'*80
         print 'Found match for hash \n'
         print 'Password recoverd: ', password_hash, ':', recoverd_password
     else:
@@ -30,6 +31,7 @@ def dictionary_attack(password_hash):
     t2 = datetime.now()
     total = t2 - t1
     print 'Scanning completed in: ', total
+    print '-'*80
 
 
 def main():
@@ -38,7 +40,6 @@ def main():
         for passwd in openfile:
             passwd = passwd.strip('\n')
             password_hash = passwd
-            # password_hash.close()
             dictionary_attack(password_hash)
     except KeyboardInterrupt:
         print '<-- Ctrl-C pressed exited'
