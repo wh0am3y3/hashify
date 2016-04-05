@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import hashlib
 from datetime import datetime
-
 dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
 
 
@@ -43,6 +42,7 @@ def main():
             dictionary_attack(password_hash)
     except KeyboardInterrupt:
         print '<-- Ctrl-C pressed exited'
+
 
 if __name__ == '__main__':
     main()
