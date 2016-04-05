@@ -6,7 +6,6 @@ dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
 
 
 def dictionary_attack(password_hash):
-    # dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
     t1 = datetime.now()
     password_found = False
     for dictionary_value in dictionary:
