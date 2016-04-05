@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-import hashlib
+from __future__ import print_function
 from datetime import datetime
+import hashlib
 dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
 
 
 def dictionary_attack(password_hash):
-    t1 = datetime.now()
     password_found = False
     for dictionary_value in dictionary:
         dictionary_value = dictionary_value.strip('\n')
@@ -22,26 +22,29 @@ def dictionary_attack(password_hash):
             password_found = True
             recoverd_password = dictionary_value.title()
     if password_found == True:
-        print '-'*80
-        print 'Found match for hash \n'
-        print 'Password recoverd: ', password_hash, ':', recoverd_password
+        f = open('found_hash.txt', 'a')
+        print(password_hash, ':', recoverd_password)
+        print(password_hash, ':', recoverd_password, file=f)
+        # f = open('found_hash.txt','w')
+        # f.write(password_hash, ':', recoverd_password, '\n')
+        f.close()
     else:
-        print 'Password not found'
-    t2 = datetime.now()
-    total = t2 - t1
-    print 'Scanning completed in: ', total
-    print '-'*80
+        print('Password not found')
 
 
 def main():
     try:
         openfile = open(raw_input('Enter Hash file: '), 'r').readlines()
+        t1 = datetime.now()
         for passwd in openfile:
             passwd = passwd.strip('\n')
             password_hash = passwd
             dictionary_attack(password_hash)
+        t2 = datetime.now()
+        total = t2 - t1
+        print('Scanning completed in: ', total)
     except KeyboardInterrupt:
-        print '<-- Ctrl-C pressed exited'
+        print('<-- Ctrl-C pressed exited')
 
 
 if __name__ == '__main__':
