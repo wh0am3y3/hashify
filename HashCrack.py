@@ -21,7 +21,7 @@ def dictionary_attack(password_hash):
         elif hashed_value_UpperLetter == password_hash:
             password_found = True
             recoverd_password = dictionary_value.title()
-    if password_found == True:
+    if password_found is True:
         f = open('found_hash.txt', 'a')
         print(password_hash, ':', recoverd_password)
         print(password_hash, ':', recoverd_password, file=f)
