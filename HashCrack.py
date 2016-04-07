@@ -5,6 +5,15 @@ import hashlib
 
 dictionary = open(raw_input('Enter dictionary file: '), 'r').readlines()
 
+# name of function
+# test_hash(hash, digest_func):
+
+# how to call it
+# test_hash(curr_hash, hashlib.md5)
+
+# inside function
+# digest_func(hash).hexdigest
+
 
 def dictionary_attack_md5(password_hash):
     password_found = False
