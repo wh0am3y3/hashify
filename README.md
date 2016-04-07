@@ -1,6 +1,6 @@
 ## hashify
 
-### Dictionary Attack based script
+### Dictionary Attack based python  
 
 ### support:
 * MD5
