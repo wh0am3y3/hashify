@@ -5,6 +5,7 @@
 ### Support:
 * MD5
 * SHA1
+* SHA256
 
 ### Checks:
 * Small latters
