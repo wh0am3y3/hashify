@@ -56,6 +56,32 @@ def dictionary_attack_sha1(password_hash):
         print('Password not found')
 
 
+def dictionary_attack_sha256(password_hash):
+    password_found = False
+    for dictionary_value in dictionary:
+        dictionary_value = dictionary_value.strip('\n')
+        hashed_value = (hashlib.sha256(dictionary_value)).hexdigest()
+        hashed_value_upper = (hashlib.sha256(dictionary_value.upper())).hexdigest()
+        hashed_value_UpperLetter = (hashlib.sha256(dictionary_value.title())).hexdigest()
+        if hashed_value == password_hash:
+            password_found = True
+            recoverd_password = dictionary_value
+        elif hashed_value_upper == password_hash:
+            password_found = True
+            recoverd_password = dictionary_value.upper()
+        elif hashed_value_UpperLetter == password_hash:
+            password_found = True
+            recoverd_password = dictionary_value.title()
+    if password_found is True:
+        f = open('found_hash.txt', 'a')
+        print(password_hash, ':', recoverd_password)
+        print(password_hash, ':', recoverd_password, file=f)
+        f.close()
+    else:
+        print('Password not found')
+
+
+
 def main():
     try:
         openfile = open(raw_input('Enter Hash file: '), 'r').readlines()
@@ -67,6 +93,8 @@ def main():
                 dictionary_attack_md5(password_hash)
             elif len(password_hash) == 40:
                 dictionary_attack_sha1(password_hash)
+            elif len(password_hash) == 64:
+                dictionary_attack_sha256(password_hash)
             t2 = datetime.now()
         total = t2 - t1
         print('Scanning completed in: ', total)
