@@ -2,16 +2,19 @@
 ![Hashify in Action](http://i.imgur.com/wTVF6Mo.png)
 ### Dictionary Attack based python  
 
-### support:
+### Support:
 * MD5
 * SHA1
 
+### Checks:
+* Small latters
+* All capitals
+* First latter capital
 
-#### usage:
-
-<code>
-./HashCrack.py
-</code>
+#### Usage:
+```sh
+$ ./HashCrack.py
+```
 
 tested on: 
 * python 2.7.11
