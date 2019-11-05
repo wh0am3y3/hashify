@@ -1,5 +1,5 @@
 ## hashify
-![Hashify in Action](http://i.imgur.com/wTVF6Mo.png)
+
 ### Dictionary Attack based python  
 
 ### Support:
