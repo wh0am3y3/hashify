@@ -1,6 +1,6 @@
 ## hashify
 
-### Dictionary Attack based python  
+### Dictionary Attack based python
 
 ### Support:
 * MD5
@@ -17,5 +17,5 @@
 $ ./HashCrack.py
 ```
 
-tested on: 
-* python 2.7.11
+tested on:
+* python 3.8
